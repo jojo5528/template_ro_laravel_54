@@ -10,13 +10,13 @@
             <h1>PLAYER</h1>
             <small>ONLINE</small>
             <h3><i class="fas fa-gamepad fa-4x"></i></h3>
-            <h2 class="text-warning">0</h2>
+            <h2 class="text-warning">{{ $count->online }}</h2>
         </div>
         <div class="col-lg-3 rounded shadow box">
             <h1>ACCOUNT</h1>
             <small>TOTAL</small>
             <h3><i class="fas fa-users fa-4x"></i></h3>
-            <h2 class="text-warning">0</h2>
+            <h2 class="text-warning">{{ $count->account }}</h2>
         </div>
     </div>
 </div>

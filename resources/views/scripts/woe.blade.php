@@ -1,7 +1,3 @@
-@php
-$woe = [];
-@endphp
-
 <div class="row justify-content-center text-center box-warreport p-5">
     <div class="col">
         <div class="table-responsive">

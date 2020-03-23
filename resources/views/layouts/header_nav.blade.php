@@ -14,22 +14,22 @@
                         Download <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('page.download') }}">Mini Client</a>
-                        <a class="dropdown-item" href="{{ route('page.download') }}">Full Client</a>
+                        <a class="dropdown-item" href="{{ route('page', 'download') }}">Mini Client</a>
+                        <a class="dropdown-item" href="{{ route('page', 'download') }}">Full Client</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="{{ route('page.info') }}" class="nav-link">Information</a></li>
+                <li class="nav-item"><a href="{{ route('page', 'info') }}" class="nav-link">Information</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Donate <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('page.donate') }}">Truemoney</a>
-                        <a class="dropdown-item" href="{{ route('page.donate') }}">Truewallet</a>
+                        <a class="dropdown-item" href="{{ route('page', 'donate') }}">Truemoney</a>
+                        <a class="dropdown-item" href="{{ route('page', 'donate') }}">Truewallet</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="{{ route('page.vote') }}" class="nav-link">Vote</a></li>
+                <li class="nav-item"><a href="{{ route('page', 'vote') }}" class="nav-link">Vote</a></li>
             </ul>
 
             <!-- Right -->

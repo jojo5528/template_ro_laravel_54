@@ -1,17 +1,92 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\WOE_Data;
+namespace App\Http\Controllers;
 
-class DatabaseSeeder extends Seeder
+use App\WOE_Data;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class WOEController extends Controller
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function index()
     {
+        $woe = WOE_Data::orderby('castle_id','asc')->paginate(20);
+        return view('ucp.gm_woe_index')->with('woe', $woe);
+    }
+
+    public function create()
+    {
+        return view('ucp.gm_woe_create');
+    }
+
+    public function edit(WOE_Data $woe)
+    {
+        return view('ucp.gm_woe_edit')->with('woe', $woe);
+    }
+
+    public function show(WOE_Data $woe)
+    {
+        return view('ucp.gm_woe_view')->with('woe', $woe);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->except('_token', '_method');
+
+        $validator = Validator::make($request->all(), [
+            'castle_id' => ['required', 'integer', 'min:0'],
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $woe = WOE_Data::create($data);
+        if(!$woe){
+            return redirect()->back()->withErrors(['error'=>'เพิ่มข้อมูล WOE Castle ล้มเหลว! กรุณาติดต่อผู้ดูแลระบบ']);
+        }
+        return redirect()->route('manage.woe.index')->withErrors(['success'=>'เพิ่มข้อมูล WOE Castle ID:'.$woe->id.' สำเร็จ!']);
+    }
+
+    public function update(Request $request, WOE_Data $woe)
+    {
+        $data = $request->except('_token', '_method');
+
+        $validator = Validator::make($request->all(), [
+            'castle_id' => ['required', 'integer', 'min:0'],
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        if(!($woe->update($data))){
+            return redirect()->back()->withErrors(['error'=>'แก้ไขข้อมูล WOE Castle ID:'.$woe->id.' ล้มเหลว! กรุณาติดต่อผู้ดูแลระบบ']);
+        }
+        return redirect()->route('manage.woe.show', $woe->id)->withErrors(['success'=>'แก้ไขข้อมูล WOE Castle ID:'.$woe->id.' สำเร็จ!']);
+    }
+
+    public function destroy(WOE_Data $woe)
+    {
+        $result = $woe->delete();
+
+        if(!$result){
+            return redirect()->route('manage.woe.index')->withErrors(['error'=>'ลบข้อมูลล้มเหลว!']);
+        }
+        return redirect()->route('manage.woe.index')->withErrors(['error'=>'ลบข้อมูลสำเร็จ!']);
+    }
+
+    public function truncate()
+    {
+        $result = WOE_Data::truncate();
+        if(!$result){
+            return redirect()->route('manage.woe.index')->withErrors(['error'=>'รีเซ็ตข้อมูลล้มเหลว!']);
+        }
+
         //WOE Castle Default
         $data = [
             //WOE FE Castle
@@ -198,6 +273,9 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Gloria 5',
             ],
         ];
+
         WOE_Data::insert($data);
+
+        return redirect()->route('manage.woe.index')->withErrors(['error'=>'รีเซ็ตข้อมูลสำเร็จ!']);
     }
 }

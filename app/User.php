@@ -2,28 +2,42 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    public $timestamps = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'login';
+    protected $primaryKey = 'account_id';
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'userid', 'user_pass', 'sex', 'email', 'birthdate',
+    ];
+
+    protected $hidden = [
+        'user_pass', 'state', 'unban_time', 'expiration_time', 'logincount',
+        'character_slots', 'pincode', 'pincode_change', 'vip_time', 'old_group',
+        'antibotphp',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * Overrides the method to ignore the remember token.
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if(!$isRememberTokenAttribute)
+        {
+            parent::setAttribute($key, $value);
+        }
+    }
+
+    public function isGM(){
+        if(($this->group_id)==99){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

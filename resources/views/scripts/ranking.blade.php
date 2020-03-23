@@ -1,7 +1,3 @@
-@php
-$collection = [];
-@endphp
-
 <div class="row justify-content-center text-center">
     <!--VOTE-->
     <div class="col-lg-3 col-md-6">
@@ -18,11 +14,11 @@ $collection = [];
             </thead>
             <tbody>
                 @php $count=1; @endphp
-                @forelse($collection as $item)
+                @forelse($ranking->vote as $item)
                     <tr>
                         <td>{{ $count }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->point }}</td>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['point'] }}</td>
                     </tr>
                     @php $count++; @endphp
                 @empty
@@ -49,11 +45,11 @@ $collection = [];
             </thead>
             <tbody>
                 @php $count=1; @endphp
-                @forelse($collection as $item)
+                @forelse($ranking->mvp as $item)
                     <tr>
                         <td>{{ $count }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->point }}</td>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['point'] }}</td>
                     </tr>
                     @php $count++; @endphp
                 @empty
@@ -80,11 +76,11 @@ $collection = [];
             </thead>
             <tbody>
                 @php $count=1; @endphp
-                @forelse($collection as $item)
+                @forelse($ranking->pvp as $item)
                     <tr>
                         <td>{{ $count }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->point }}</td>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['point'] }}</td>
                     </tr>
                     @php $count++; @endphp
                 @empty
@@ -111,11 +107,11 @@ $collection = [];
             </thead>
             <tbody>
                 @php $count=1; @endphp
-                @forelse($collection as $item)
+                @forelse($ranking->share as $item)
                     <tr>
                         <td>{{ $count }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->point }}</td>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['point'] }}</td>
                     </tr>
                     @php $count++; @endphp
                 @empty
