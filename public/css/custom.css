@@ -1,0 +1,27 @@
+.box-warreport{
+    min-height: 250px;
+    border: thick solid #1a1a1a50;
+    border-radius: 1rem;
+    background-image: url('./../images/bg_footer.jpg');
+    background-repeat: no-repeat;
+    background-size: cover auto;
+    background-position: bottom center;
+}
+
+div.logo, div.logo-pager{
+    margin-top: 0;
+    background-image: url('./../images/bg_head.jpg');
+    background-repeat: no-repeat;
+    background-size: cover auto;
+    background-position: top center;
+}
+
+@media (min-width: 768px){
+    .menu_support{
+        min-height: 400px;
+        background-image: url('./../images/support_menu.png');
+        background-repeat: no-repeat;
+        background-size: cover auto;
+        background-position: bottom center;
+    }
+}

@@ -1,0 +1,291 @@
+html, body{
+    font-family: 'Prompt', sans-serif !important;
+    font-weight: 300;
+}
+a, b, strong, h1, h2, h3, h4, h5, h6, ul, li, thead, th, label{
+    font-weight: 400;
+}
+@include media-breakpoint-up(lg){
+    .nav-item{
+        padding: 0 1rem;
+        border-left: thin solid #1a1a1a;
+        &.first{
+            border-left: none;
+        }
+        &.dropdown{
+            &:hover{
+                cursor: pointer;
+            }
+            .nav-link:hover , &:hover{
+                .dropdown-menu{
+                    display: block;
+                    visibility: visible;
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                .dropdown-toggle::after{
+                    animation-name: float;
+                    animation-duration: 1.5s;
+                    animation-delay: 0;
+                    animation-iteration-count: infinite;
+                    animation-fill-mode: both;
+                }
+            }
+            .dropdown-menu{
+                .dropdown-item:hover, .dropdown-item:focus{
+                    background-color: $yellow;
+                }
+            }
+        }
+        .dropdown-menu{
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            margin-top: 0;
+            transition: all 0.5s ease;
+            transform: translateY(20px);
+        }
+        &:hover::after{
+            width: 100%;
+        }
+        &::after{
+            content: '';
+            display: block;
+            width: 0px;
+            height: 2px;
+            background-color: $yellow;
+            transition: 0.25s;
+        }
+    }
+    .navbar-nav.ml-auto{
+        .nav-item::after{
+            background: none;
+        }
+    }
+}
+
+#particles{
+    position: absolute;
+    animation-name: none;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.logo{
+    display: flex;
+    vertical-align: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    min-height: 600px;
+    max-height: 600px;
+    overflow: hidden;
+    *{
+        margin: auto auto;
+        animation-name: heartBeat;
+        animation-fill-mode: both;
+        animation-delay: 0s;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    img{
+        max-width: 50vh;
+        width: 100%;
+        height: auto;
+    }
+}
+.logo-pager{
+    display: flex;
+    vertical-align: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    *{
+        margin: auto auto;
+    }
+    img{
+        max-width: 50vh;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.page-footer{
+    background-color: $yellow;
+    a{
+        transition: all 0.25s ease;
+        color: $white;
+        text-shadow: 0;
+        i{
+            transition: all 0.25s ease;
+            animation-name: unset;
+            animation-duration: 1s;
+            animation-delay: 0;
+            animation-fill-mode: both;
+        }
+        &:hover{
+            color: $cyan;
+            text-shadow: 0 0 8px $cyan;
+            text-decoration-color: $cyan;
+            i{
+                animation-name: float-h;
+                animation-iteration-count: infinite;
+            }
+        }
+    }
+    .embed{
+        margin: 0;
+        padding: 0;
+        iframe{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .footer-copyright{
+        background-color: $orange;
+        a{
+            i{
+                transition: all 0.25s ease;
+                animation-name: unset;
+                animation-duration: 1s;
+                animation-delay: 0;
+                animation-fill-mode: both;
+            }
+            transition: all 0.25s ease;
+            color: $red;
+            text-shadow: 0;
+            &:hover{
+                text-shadow: 0 0 8px $pink;
+                text-decoration-color: $pink;
+                i{
+                    color: $yellow;
+                    animation-name: float;
+                    animation-iteration-count: infinite;
+                }
+            }
+        }
+    }
+}
+
+.status_server{
+    padding-bottom: 1rem;
+    .box{
+        border: #ececec double thick;
+        text-align: center;
+        background-color: $white;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 4rem 3rem;
+        p, small, label, h1, h2, h3, h4, h5, h6{
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+        .text-success{
+            color: $teal !important;
+            text-shadow: 0 0 8px $green;
+        }
+        .text-warning{
+            color: $yellow !important;
+            text-shadow: 0 0 8px $orange;
+        }
+        .text-danger{
+            color: $red !important;
+            text-shadow: 0 0 8px $pink;
+        }
+        h2{
+            background-color: #1a1a1a;
+            border-radius: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+    }
+}
+
+hr{
+    z-index: 2;
+}
+
+.menu_support{
+    .btn{
+        transition: all 0.25s ease;
+        background-color: $yellow;
+        box-shadow: 0 0 5px $black;
+        border: 0.2rem dashed $white;
+        border-radius: 1rem;
+        i{
+            animation-name: unset;
+            animation-duration: 3s;
+            animation-delay: 0;
+            animation-fill-mode: both;
+        }
+        &:hover{
+            i{
+                color: $cyan;
+                animation-name: shake;
+                animation-iteration-count: infinite;
+            }
+            background-color: $orange;
+            text-shadow: 0 0 5px $yellow;
+        }
+    }
+}
+
+.pager{
+    .card{
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+}
+
+@include media-breakpoint-up(lg){
+    .pager{
+        .card, .card::before, .card::after{
+            box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+            border: 1px solid #bbb;
+            overflow: unset;
+        }
+        .card::before, .card::after{
+            content: "";
+            position: absolute;
+            height: 98%;
+            width: 98%;
+            background-color: #eee;
+        }
+        .card::before{
+            right: 15px;
+            top: 0;
+            transform: rotate(-2deg);
+            z-index: -1;
+        }
+        .card::after{
+            top: 5px;
+            right: -5px;
+            transform: rotate(2deg);
+            z-index: -2;
+        }
+    }
+}
+
+.card{
+    a{
+        overflow: hidden;
+        .newslogo{
+            transform: none;
+            transition: all 0.25s ease;
+            &:hover{
+                transform: scale(2) rotate(20deg);
+                filter: contrast(120%);
+            }
+        }
+    }
+}
