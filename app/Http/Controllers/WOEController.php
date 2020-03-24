@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\WOE_Data;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class WOEController extends Controller
 {

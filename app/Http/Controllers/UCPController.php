@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\News;
 
 class UCPController extends Controller
 {
