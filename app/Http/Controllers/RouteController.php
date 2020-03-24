@@ -112,29 +112,4 @@ class RouteController extends Controller
         ];
         return view('home')->with($data);
     }
-
-    public function download()
-    {
-        return view('home');
-    }
-
-    public function info()
-    {
-        return view('home');
-    }
-
-    public function donate()
-    {
-        return view('home');
-    }
-
-    public function vote()
-    {
-        return view('home');
-    }
-
-    public function share()
-    {
-        return view('home');
-    }
 }
