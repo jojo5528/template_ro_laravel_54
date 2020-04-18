@@ -17,3 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
+
+Route::post('share', 'FBController@share')->name('api.share');
+Route::post('check_profile', 'FBController@check_profile')->name('api.check_profile');

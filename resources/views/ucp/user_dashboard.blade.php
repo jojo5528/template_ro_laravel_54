@@ -55,6 +55,8 @@
                             </h3>
                             <h4>Last Login: <small class="text-muted">{{Auth::user()->lastlogin}}</small></h4>
                             <h4>Last IP: <small class="text-muted">{{Auth::user()->last_ip}}</small></h4>
+                            <h4>Share Pont: แต้มปัจจุบัน <small class="text-muted">{{$share_point}}</small> / แต้มสะสม <small class="text-muted">{{$share_point_total}}</small></h4>
+
                         </div>
                         <hr class="clearfix w-100 d-md-none pb-3">
                         <div class="col text-center">

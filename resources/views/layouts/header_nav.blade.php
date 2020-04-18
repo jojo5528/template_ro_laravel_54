@@ -7,29 +7,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item first"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li>
+                <li class="nav-item first"><a href="{{ route('home') }}" class="nav-link">หน้าแรก</a></li>
+                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">สมัครไอดีเกมส์</a></li>
+                <li class="nav-item"><a href="{{ route('page', 'download') }}" class="nav-link">ดาวน์โหลด</a></li>
+		<li class="nav-item"><a href="{{ route('page', 'info') }}" class="nav-link">ข้อมูลเซิร์ฟเวอร์</a></li>
+		<li class="nav-item"><a href="{{ route('page', 'donate') }}" class="nav-link">สนับสนุนเซิร์ฟเวอร์</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Download <span class="caret"></span>
+                        เมนูเพิ่มเติม <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('page', 'download') }}">Mini Client</a>
-                        <a class="dropdown-item" href="{{ route('page', 'download') }}">Full Client</a>
+                        <a class="dropdown-item" href="{{ route('page', 'zeny') }}">ตรวจสอบคนรวย</a>
+                        <a class="dropdown-item" href="{{ route('page', 'level') }}">ดูอาชีพทั้งหมดในเซิร์ฟเวอร์</a>
+                        <a class="dropdown-item" href="{{ route('page', 'share') }}">สะสมแต้ม Shared Facebook</a>
+                        <a class="dropdown-item" href="http://147.50.241.181/worldmap.html" target="_blank">World Map 2.0</a>
+                        <a class="dropdown-item" href="{{ route('page', 'vote') }}">ติดต่อ GM</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="{{ route('page', 'info') }}" class="nav-link">Information</a></li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Donate <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('page', 'donate') }}">Truemoney</a>
-                        <a class="dropdown-item" href="{{ route('page', 'donate') }}">Truewallet</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="{{ route('page', 'vote') }}" class="nav-link">Vote</a></li>
+               
             </ul>
 
             <!-- Right -->
@@ -50,9 +45,10 @@
                             @if(Auth::user()->isGM()) <b class="badge badge-pill badge-danger">GM</b> @endif {{Auth::user()->userid}} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fas fa-user"></i> MY ACCOUNT</a>
-                            <a class="dropdown-item" href="{{ route('user.changepassword') }}"><i class="fas fa-user-edit"></i> CHANGE PASSWORD</a>
-                            <a class="dropdown-item" href="{{ route('user.changemail') }}"><i class="fas fa-user-edit"></i> CHANGE EMAIL</a>
+                            <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fas fa-user"></i> ข้อมูลของฉัน</a>
+                            <a class="dropdown-item" href="{{ route('user.changepassword') }}"><i class="fas fa-user-edit"></i> เปลี่ยนรหัสผ่าน</a>
+                            <a class="dropdown-item" href="{{ route('user.changemail') }}"><i class="fas fa-user-edit"></i> เปลี่ยนอีเมลล์</a>
+                            <a class="dropdown-item" href="{{ route('user.tmpay') }}"><i class="fad fa-money-bill-wave"></i> เติมเงิน TMPAY</a>
 
                             @if(Auth::user()->isGM())
                                 <hr class="dropdown-divider">
@@ -62,10 +58,11 @@
                                 <a class="dropdown-item" href="{{ route('manage.page') }}"><i class="fas fa-edit"></i> PAGE ARTICLES</a>
                                 <a class="dropdown-item" href="{{ route('manage.site') }}"><i class="fas fa-wrench"></i> SITE CONFIG</a>
                                 <a class="dropdown-item" href="{{ route('manage.woe.index') }}"><i class="fas fa-wrench"></i> WOE SETTING</a>
+                                <a class="dropdown-item" href="{{ route('manage.tmpay') }}"><i class="fad fa-money-bill-wave"></i> TMPAY</a>
                             @endif
 
                             <hr class="dropdown-divider">
-                            <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+                            <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
                         </div>
                     </li>
                 @endguest

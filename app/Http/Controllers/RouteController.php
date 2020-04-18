@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Char;
 use App\WOE;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class RouteController extends Controller
@@ -26,12 +27,14 @@ class RouteController extends Controller
         $col['mvp'] = 'mvp';
         $col['pvp'] = 'kills';
         $col['vote'] = 'point_total';
-        $col['share'] = 'cashpoints_share';
+        $col['share'] = 'total_point';
+
+        $table['share'] = 'kafra_share';
 
         $chk_col['mvp'] = Schema::hasColumn('char', $col['mvp']);
         $chk_col['pvp'] = Schema::hasColumn('char', $col['pvp']);
         $chk_col['vote'] = Schema::hasColumn('login', $col['vote']);
-        $chk_col['share'] = Schema::hasColumn('login', $col['share']);
+        $chk_col['share'] = Schema::hasColumn($table['share'], $col['share']);
 
         //mvp
         $mvp_data = [];
@@ -73,11 +76,16 @@ class RouteController extends Controller
         //share
         $share_data = [];
         if($chk_col['share']){
-            $share = User::select('userid', $col['share'])->orderby($col['share'], 'desc')->take(10)->get();
-            if(!empty($vote)){
-                foreach($share as $idx=>$i){
-                    $share_data[$idx]['name'] = $i['userid'];
-                    $share_data[$idx]['point'] = $i[$col['share']];
+            $query = "select * from ". $table['share'] ." order by ". $col['share'] ." desc limit 10";
+            $share = DB::select($query);
+
+            if(!empty($share)){
+                $idx = 0;
+                foreach($share as $i){
+                    $user = User::where('account_id', $i->account_id)->first();
+                    $share_data[$idx]['name'] = $user->userid;
+                    $share_data[$idx]['point'] = $i->total_point;
+                    $idx++;
                 }
             }
         }
@@ -111,5 +119,30 @@ class RouteController extends Controller
             'woe'=>$woe,
         ];
         return view('home')->with($data);
+    }
+
+    public function secret_coupon()
+    {
+        $table = 'coupons';
+        $view = 'coupon';
+
+        if(Schema::hasTable($table)){
+            $coupon = DB::select('select * from '. $table);
+            if(!empty($coupon)){
+                $data['coupon'] = $coupon;
+            }else{
+                $error = ['data' => 'ขณะนี้ยังไม่มีข้อมูล '. $table];
+            }
+        }else{
+            $error = ['table' => 'ไม่พบ Table:'. $table];
+        }
+
+        if(!empty($data)){
+            return view($view)->with($data);
+        }else if(!empty($error)){
+            return view($view)->withErrors($error);
+        }
+        
+        return view($view);
     }
 }

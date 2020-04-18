@@ -6,22 +6,20 @@
     <!-- CSRF -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Prefetch -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
-    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link href="{{ secure_asset('css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
 
     <!-- JS -->
-    <script src="{{ asset('js/particles.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/particles.min.js') }}"></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
 </head>
 <body>
 
@@ -30,7 +28,7 @@
 
         <div id="particles"></div>
         <div class="container-fluid logo">
-            <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
+            <img src="{{ secure_asset('images/logo1.png') }}" alt="{{ config('app.name', 'Laravel') }}">
         </div>
 
         <main class="py-3 mb-3">

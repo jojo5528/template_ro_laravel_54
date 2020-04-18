@@ -20,4 +20,26 @@ class Char extends Model
         'partner_id', 'father', 'mother', 'child', 'fame', 'rename', 'delete_date', 'moves', 'unban_time', 'font',
         'uniqueitem_counter', 'sex', 'hotkey_rowshift', 'clan_id', 'last_login', 'title_id', 'show_equip',
     ];
+
+    public function classname()
+    {
+        $class = (int)$this->class;
+        $string = "UNSET";
+
+        $class_arr = [
+            0 => 'Novice',
+            1 => 'Swordman',
+            2 => 'Magician',
+            3 => 'Archer',
+            4 => 'Acolyte',
+            5 => 'Merchant',
+            6 => 'Thief',
+        ];
+
+        if(array_key_exists($class, $class_arr)){
+            $string = $class_arr[$class];
+        }
+
+        return $string;
+    }
 }
